@@ -1,0 +1,42 @@
+﻿<Window x:Class="ScreenTimeBreak.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScreenTimeBreak"
+        mc:Ignorable="d"
+        Title="Bildschirmpause" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="316" />
+            <RowDefinition Height="140"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Arbeitszeit in Minuten:" FontSize="14" Foreground="DarkGray"/>
+            <TextBox Text="{Binding WorkTimeLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="DarkGray" Width="30" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Pausenzeit in Minuten:" FontSize="14" Foreground="DarkGray"/>
+            <TextBox Text="{Binding ChillTimeLimit, Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}" Foreground="DarkGray" Width="30" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Center" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Arbeitszeit" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Margin="0 42 0 0" />
+            <Label Name="lblWorkTime" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Regenerationszeit" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Margin="0 42 0 0" />
+            <Label Name="lblChillTime" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <Button Name="btnChill" Content="Pause" Click="btnChill_Click" FontSize="42" Padding="35 5 35 5" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <Button Name="btnReset" Content="Reset" Click="btnReset_Click" FontSize="42" Padding="35 5 35 5" />
+        </StackPanel>
+    </Grid>
+</Window>
