@@ -3,25 +3,29 @@
     public class TimerSettings
     {
 
-        private string _workTimeLimit;
-        private string _chillTimeLimit;
+        private int _workTimeLimit;
+        private int _chillTimeLimit;
+        private int _alarmRepititions;
 
-        public string WorkTimeLimit
+        public int WorkTimeLimit
         {
             get { return _workTimeLimit; }
             set { _workTimeLimit = value; }
         }
 
-        public string ChillTimeLimit
+        public int ChillTimeLimit
         {
             get { return _chillTimeLimit; }
             set { _chillTimeLimit = value; }
         }
 
-        public TimerSettings(string workTimeLimit, string chillTimeLimit)
+        public int AlarmRepititions { get => _alarmRepititions; set => _alarmRepititions = value; }
+
+        public TimerSettings(int workTimeLimit, int chillTimeLimit, int alarmRepititions)
         {
             WorkTimeLimit = workTimeLimit;
             ChillTimeLimit = chillTimeLimit;
+            AlarmRepititions = alarmRepititions;
         }
     }
 }

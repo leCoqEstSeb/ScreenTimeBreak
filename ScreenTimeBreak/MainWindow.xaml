@@ -5,22 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenTimeBreak"
         mc:Ignorable="d"
+        ResizeMode="CanMinimize"
         Title="Bildschirmpause" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
-            <RowDefinition Height="316" />
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="300" />
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions >
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <Label Content="Arbeitszeit in Minuten:" FontSize="14" Foreground="DarkGray"/>
             <TextBox Text="{Binding WorkTimeLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="DarkGray" Width="30" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+        <StackPanel x:Name="test" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <Label Content="Pausenzeit in Minuten:" FontSize="14" Foreground="DarkGray"/>
             <TextBox Text="{Binding ChillTimeLimit, Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}" Foreground="DarkGray" Width="30" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Center" />
         </StackPanel>
@@ -38,5 +40,22 @@
         <StackPanel Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <Button Name="btnReset" Content="Reset" Click="btnReset_Click" FontSize="42" Padding="35 5 35 5" />
         </StackPanel>
+        <ToggleButton x:Name="tgbPopup" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Background="WhiteSmoke" Foreground="DarkGray">
+            <StackPanel>
+                <TextBlock FontSize="14" Padding="5">
+                    <Run Text="Credits" />
+                </TextBlock>
+                <Popup Name="about" IsOpen="{Binding IsChecked, ElementName=tgbPopup}" PlacementTarget="{Binding ElementName=tgbPopup}" HorizontalOffset="-200">
+                    <Border BorderThickness="0">
+                        <TextBlock x:Name="aboutText" Background="WhiteSmoke" Foreground="Black" Padding="30" FontSize="14">
+                            Author: Sebastian Hahn <LineBreak />
+                            Task Bar Icon made by
+                            <Hyperlink NavigateUri="https://www.flaticon.com/authors/good-ware" RequestNavigate="Hyperlink_RequestNavigate">Good Ware</Hyperlink>
+                            from <Hyperlink NavigateUri="https://www.flaticon.com" RequestNavigate="Hyperlink_RequestNavigate">www.flaticon.com</Hyperlink>
+                        </TextBlock>
+                    </Border>
+                </Popup>
+            </StackPanel>
+        </ToggleButton>
     </Grid>
 </Window>
