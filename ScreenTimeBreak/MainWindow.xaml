@@ -52,6 +52,8 @@
                             Task Bar Icon made by
                             <Hyperlink NavigateUri="https://www.flaticon.com/authors/good-ware" RequestNavigate="Hyperlink_RequestNavigate">Good Ware</Hyperlink>
                             from <Hyperlink NavigateUri="https://www.flaticon.com" RequestNavigate="Hyperlink_RequestNavigate">www.flaticon.com</Hyperlink>
+                            <LineBreak />
+                            <Run Text="{Binding VersionInfo, Mode=OneTime}" />
                         </TextBlock>
                     </Border>
                 </Popup>

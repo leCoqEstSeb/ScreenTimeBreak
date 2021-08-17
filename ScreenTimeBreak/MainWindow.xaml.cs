@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Media;
@@ -22,7 +23,7 @@ namespace ScreenTimeBreak
         private MediaPlayer mediaPlayer = new MediaPlayer();
         bool allowAlarm = true;
         int alarmRepititionsCount = 0;
-
+        string versionInfo = $"Version: {Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion}";
         public MainWindow()
         {
             InitializeComponent();
@@ -39,11 +40,16 @@ namespace ScreenTimeBreak
                 timer = new(50, 10, 1);
             }
             this.DataContext = timer;
+            this.aboutText.DataContext = this;
             workWatch.Start();
             mediaPlayer.Open(new Uri("C:\\Windows\\Media\\Alarm05.wav"));
             mediaPlayer.MediaEnded += OnMediaEnded;
             Deactivated += OnWindowDeactivated;
             Closing += OnWindowClosing;
+        }
+        public string VersionInfo
+        {
+            get { return versionInfo; }
         }
         #region "Event handling"
         void timer_tick(object sender, EventArgs e)
